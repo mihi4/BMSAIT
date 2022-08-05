@@ -12,7 +12,7 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 100;ALTIMETER;float;cabinAlt;Ownship cabin altitude
 101;ALTIMETER;int;cabinAlt(s);Ownship cabin altitude (0..65535)
 110;ALTIMETER;float;caraAlow;Cara alow setting
-120;ALTIMETER;float;RALT;Radar altitude (only valid/ reliable if MiscBit "RALT_Valid" is set)
+120;ALTIMETER;float;RALT;Radar altitude (only valid/ reliable if MiscBit 'RALT_Valid' is set)
 130;ALTIMETER;string;AltCalReading;Altimeter setting (e.g. 1013/2992)
 150;CMDS/RWR;float;ChaffCount;Number of Chaff left
 160;CMDS/RWR;float;FlareCount;Number of Flare left
