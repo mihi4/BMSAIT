@@ -87,7 +87,7 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 540;FUEL;float;internalFuel;Ownship internal fuel (Lbs)
 550;FUEL;float;total;Total fuel in lbs
 551;FUEL;string;total(s);Total Fuel (as 5 digit string)
-560;GEAR;float;bumpIntensity;"Intensity of a ""bump"" while taxiing/rolling, 0..1"
+560;GEAR;float;bumpIntensity;Intensity of a 'bump' while taxiing/rolling, 0..1
 570;GEAR;float;gearPos;Ownship Gear position 0 = up, 1 = down
 580;GEAR;float;LeftGearPos;Position of the left landinggear
 590;GEAR;float;NoseGearPos;Position of the nose landinggear
@@ -232,7 +232,7 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1462;HSI/ADI/TACAN;bool;ilsWarning  ;HSI_FLAG_ILS_WARN
 1463;HSI/ADI/TACAN;bool;courseWarning;HSI_FLAG_CRS_WARN
 1464;HSI/ADI/TACAN;bool;init ;HSI_FLAG_INIT
-1465;HSI/ADI/TACAN;bool;totalFlags ;"HSI_FLAG_TOTAL_FLAGS; never set"
+1465;HSI/ADI/TACAN;bool;totalFlags ;HSI_FLAG_TOTAL_FLAGS; never set
 1466;HSI/ADI/TACAN;bool;adi_OFF ;ADI OFF Flag
 1467;HSI/ADI/TACAN;bool;adi_AUX ;ADI AUX Flag
 1468;HSI/ADI/TACAN;bool;adi_GS ;ADI GS FLAG
@@ -263,13 +263,13 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1501;CAUTION;bool;masterCaution ;Left eyebrow
 1502;CAUTION;bool;tf;Left eyebrow
 1503;CAUTION;byte;oxy_BROW ;Repurposed for eyebrow OXY LOW (was OBS, unused)
-1504;CAUTION;bool;equip_HOT ;"Caution light; repurposed for cooling fault (was: not used)"
+1504;CAUTION;bool;equip_HOT ;Caution light; repurposed for cooling fault (was: not used)
 1505;LIGHTS;bool;onGround ;True if on ground: this is not a lamp bit!
-1506;CAUTION;bool;eng_FIRE ;"Right eyebrow; upper half of split face lamp"
+1506;CAUTION;bool;eng_FIRE ;Right eyebrow; upper half of split face lamp
 1507;CAUTION;bool;config;Stores config, caution panel
-1508;CAUTION;bool;hyd;"Right eyebrow; see also OIL (this lamp is not split face)"
-1509;TEST/FLCS;bool;flcs_ABCD ;"TEST panel FLCS channel lamps; repurposed, was OIL (see HYD; that lamp is not split face)"
-1510;CAUTION;bool;flcs;"Right eyebrow; was called DUAL which matches block 25, 30/32 and older 40/42"
+1508;CAUTION;bool;hyd;Right eyebrow; see also OIL (this lamp is not split face)
+1509;TEST/FLCS;bool;flcs_ABCD ;TEST panel FLCS channel lamps; repurposed, was OIL (see HYD; that lamp is not split face)
+1510;CAUTION;bool;flcs;Right eyebrow; was called DUAL which matches block 25, 30/32 and older 40/42
 1511;CAUTION;bool;can;Right eyebrow
 1512;CAUTION;bool;t_l_CFG ;Right eyebrow
 1513;INDEXER;bool;aoaAbove ;AOA Indexer top
@@ -291,7 +291,7 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1529;CAUTION;bool;nwsFail ;Caution lights
 1530;CAUTION;bool;cabinPress ;Caution lights
 1531;SYSTEMS;bool;autoPilotOn ;TRUE if is AP on.  NB: This is not a lamp bit!
-1532;SYSTEMS;bool;tfr_STBY ;"MISC panel; lower half of split face TFR lamp"
+1532;SYSTEMS;bool;tfr_STBY ;MISC panel; lower half of split face TFR lamp
 1540;LIGHTS;uint;lightBits2;Cockpit Indicator Lights, one bit per bulb. See enum
 1541;CMDS/RWR;bool;handOff ;Threat Warning Prime
 1542;CMDS/RWR;byte;launch ;Threat Warning Prime
@@ -313,8 +313,8 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1558;CMDS/RWR;bool;ecmFail ;ECM
 1559;CAUTION;bool;fwdFuelLow ;Caution lights
 1560;CAUTION;bool;aftFuelLow ;Caution lights
-1561;ENGINE;byte;epuOn ;"EPU panel; run light"
-1562;ENGINE;byte;jfsOn ;"Eng Jet Start panel; run light"
+1561;ENGINE;byte;epuOn ;EPU panel; run light
+1562;ENGINE;byte;jfsOn ;Eng Jet Start panel; run light
 1563;CAUTION;bool;sec ;Caution panel
 1564;CAUTION;bool;oxy_Low;Caution panel
 1565;CAUTION;byte;probeHeat;Caution panel
@@ -322,7 +322,7 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1567;CAUTION;bool;buc;Caution panel
 1568;CAUTION;bool;fuel_Oil_Hot ;Caution panel
 1569;CAUTION;bool;anti_Skid;Caution panel
-1570;CAUTION;bool;tfr_Engaged;"MISC panel; upper half of split face TFR lamp"
+1570;CAUTION;bool;tfr_Engaged;MISC panel; upper half of split face TFR lamp
 1571;GEAR;bool;gearHandle ;Lamp in gear handle lights on fault or gear in motion
 1572;CAUTION;bool;engine;Lower half of right eyebrow ENG FIRE/ENGINE lamp
 1580;LIGHTS;uint;lightBits3;Cockpit Indicator Lights, one bit per bulb. See enum
@@ -340,17 +340,17 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1592;CAUTION;bool;lef_Fault ;Caution panel
 1593;GEAR;bool;onGround ;Weight-on-wheels
 1594;TEST/FLCS;bool;flcsBitRun ;FLT CONTROL panel RUN light (used to be Multi-engine fire light)
-1595;TEST/FLCS;bool;flcsBitFail ;"FLT CONTROL panel FAIL light (used to be Lock light Cue; non-F-16)"
-1596;CAUTION;bool;dbuWarn ;"Right eyebrow DBU ON cell; was Shoot light cue; non-F16"
-1597;GEAR;bool;noseGearDown ;"Landing gear panel; on means down and locked"
-1598;GEAR;bool;leftGearDown ;"Landing gear panel; on means down and locked"
-1599;GEAR;bool;rightGearDown ;"Landing gear panel; on means down and locked"
-1600;GEAR;bool;parkBrakeOn ;"Parking brake engaged; NOTE: not a lamp bit"
+1595;TEST/FLCS;bool;flcsBitFail ;FLT CONTROL panel FAIL light (used to be Lock light Cue; non-F-16)
+1596;CAUTION;bool;dbuWarn ;Right eyebrow DBU ON cell; was Shoot light cue; non-F16
+1597;GEAR;bool;noseGearDown ;Landing gear panel; on means down and locke
+1598;GEAR;bool;leftGearDown ;Landing gear panel; on means down and locked
+1599;GEAR;bool;rightGearDown ;Landing gear panel; on means down and locked
+1600;GEAR;bool;parkBrakeOn ;Parking brake engaged; NOTE: not a lamp bit
 1601;ELECTRICS;bool;power_Off ;Set if there is no electrical power.  NB: not a lamp bit
 1602;CAUTION;bool;cadc ;Caution panel
 1603;AIRCRAFT;bool;sSpeedBrake ;True if speed brake is in anything other than stowed position
 1604;TEST/FLCS;bool;sysTest ;Threat Warning Prime - additional bits
-1605;CAUTION;bool;mcAnnounced ;"Master Caution WILL come up in 3sec; turns off when MC light is on"
+1605;CAUTION;bool;mcAnnounced ;Master Caution WILL come up in 3sec; turns off when MC light is on
 1606;AIRCRAFT;bool;mlgWow ;MLGWOW is only for AFM , it means WOW switches on MLG are triggered 
 1607;AIRCRAFT;bool;nlgWow ;NLGWOW is only for AFM , it means WOW switches on MLG are triggered 
 1608;AIRCRAFT;bool;atf_Not_Engaged;Autopilot status TFR
@@ -434,11 +434,11 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1702;F4SM;string;ButtonsFile;path to 3dbuttons.dat file
 1703;F4SM;string;CockpitFile;path to 3dckpt.dat file
 1710;F4SM;int;VersionNum;Version of the DrawingData shared memory area
-1720;HUD/HMCS;int;HUD_length;"The length of the string in ""HUD_commands"" (1730)"
+1720;HUD/HMCS;int;HUD_length;The length of the string in 'HUD_commands' (1730)
 1730;HUD/HMCS;string;HUD_commands;2D drawing commands für HUD
-1740;HUD/HMCS;int;HMS_length;"The length of the string in ""HMS_commands"" (1750)"
+1740;HUD/HMCS;int;HMS_length;The length of the string in 'HMS_commands' (1750)
 1750;HUD/HMCS;string;HMS_commands;2D drawing commands für HMCS
-1760;CMDS/RWR;int;RWR_length;"The length of the string in ""RWR_commands"" (1770)"
+1760;CMDS/RWR;int;RWR_length;The length of the string in 'RWR_commands' (1770)
 1770;CMDS/RWR;string;RWR_commands;2D drawing commands für RWR
 5000;DCSCommon;string;DCSBIOSVer;Version of DCSBIOS
 5010;DCS_GFS;int;SpeedbrakeLeft;Position of left speedbrake
