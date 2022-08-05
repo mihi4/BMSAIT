@@ -19,8 +19,8 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 170;CMDS/RWR;byte[];RwrInfo;New RWR Info
 180;CMDS/RWR;int;cmdsMode;Ownship CMDS mode state see CmdsModes enum for details
 190;AIRCRAFT;float;lefPos;Ownship LEF position
-200;AIRCRAFT;float;speedBrake;Ownship speed brake position 0 = closed, 1 = 60 Degrees open
-201;AIRCRAFT;int;speedBrake(g);Ownship speed brake position 0 = closed, 65535= 60 Degrees open
+200;AIRCRAFT;float;speedBrake;Ownship speed brake position 0 = closed 1 = 60 Degrees open
+201;AIRCRAFT;int;speedBrake(g);Ownship speed brake position 0 = closed 65535= 60 Degrees open
 210;AIRCRAFT;float;tefPos;Ownship TEF position
 220;AIRCRAFT;float;vtolPos;Ownship VTOL exhaust angle
 230;DED/PFL;string[];DEDLines;All 5 rows with 25 chars each
@@ -63,8 +63,8 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 350;ENGINE;float;rpm2;Ownship engine rpm2 (Percent 0-103)
 351;ENGINE;int;rpm2(g);RPM2 gauge indicator (0..65535)
 360;ENVIROMENT;float;windOffset;Wind delta to FPM (Radians)
-370;ENVIROMENT;float;bullseyeX;Bullseye X in sim coordinates (same as ownship, i.e. North (Ft))
-380;ENVIROMENT;float;bullseyeY;Bullseye Y in sim coordinates (same as ownship, i.e. East (Ft))
+370;ENVIROMENT;float;bullseyeX;Bullseye X in sim coordinates (same as ownship i.e. North (Ft))
+380;ENVIROMENT;float;bullseyeY;Bullseye Y in sim coordinates (same as ownship i.e. East (Ft))
 390;F4SM;int;BMSBuildNumber;E.g. build 20050
 400;F4SM;int;BMSVersionMajor;E.g.  4.
 410;F4SM;int;BMSVersionMinor;E.g. 34.
@@ -87,8 +87,8 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 540;FUEL;float;internalFuel;Ownship internal fuel (Lbs)
 550;FUEL;float;total;Total fuel in lbs
 551;FUEL;string;total(s);Total Fuel (as 5 digit string)
-560;GEAR;float;bumpIntensity;Intensity of a 'bump' while taxiing/rolling, 0..1
-570;GEAR;float;gearPos;Ownship Gear position 0 = up, 1 = down
+560;GEAR;float;bumpIntensity;Intensity of a 'bump' while taxiing/rolling. 0..1
+570;GEAR;float;gearPos;Ownship Gear position 0 = up 1 = down
 580;GEAR;float;LeftGearPos;Position of the left landinggear
 590;GEAR;float;NoseGearPos;Position of the nose landinggear
 600;GEAR;float;RightGearPos;Position of the right landinggear
@@ -120,7 +120,7 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 850;HSI/ADI/TACAN;int;totalStates;HSI_STA_TOTAL_STATES
 860;UNKNOWN;ushort[];RTT_area;For each area: left/top/right/bottom
 870;UNKNOWN;ushort[];RTT_size;RTT overall width and height
-880;LIGHTS;byte;instrLight;Current instrument backlight brightness setting, see InstrLight enum for details
+880;LIGHTS;byte;instrLight;Current instrument backlight brightness setting. see InstrLight enum for details
 890;IFF;string;iffBackupMode;IFF panel backup Mode1 all 4 digits
 891;IFF;byte;iffBackupMode1Digit1;IFF panel backup Mode1 digit 1
 892;IFF;byte;iffBackupMode1Digit2;IFF panel backup Mode1 digit 2
@@ -134,11 +134,11 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 923;TEST/FLCS;bool;Flcs_Flcc_B;FLCS B LED
 924;TEST/FLCS;bool;Flcs_Flcc_C;FLCS C LED
 925;TEST/FLCS;bool;Flcs_Flcc_D;FLCS D LED
-926;SYSTEMS;bool;SolenoidStatus;0 not powered or failed or WOW  , 1 is working OK
+926;SYSTEMS;bool;SolenoidStatus;0 not powered or failed or WOW   1 is working OK
 980;MULTIPLAYER;byte;pilotsOnline;Number of pilots in an MP session
-990;MULTIPLAYER;byte[];pilotsStatus;Status of the MP pilots, see enum FlyStates
+990;MULTIPLAYER;byte[];pilotsStatus;Status of the MP pilots see enum FlyStates
 1000;MULTIPLAYER;string[];pilotsCallsign;List of pilots callsign connected to an MP session
-1010;MULTIPLAYER;int;vehicleACD;Ownship ACD index number, i.e. which aircraft type are we flying.
+1010;MULTIPLAYER;int;vehicleACD;Ownship ACD index number i.e. which aircraft type are we flying.
 1020;NAVIGATION;float;x;Ownship North (Ft)
 1030;NAVIGATION;float;y;Ownship East (Ft)
 1040;NAVIGATION;float;z;Ownship Down (Ft)
@@ -184,7 +184,7 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1210;CMDS/RWR;uint[];missileLaunch;???
 1220;CMDS/RWR;uint[];newDetection;???
 1230;CMDS/RWR;uint[];selected;???
-1240;SYSTEMS;uint;powerBits;Ownship power bus / generator states, see PowerBits enum for details
+1240;SYSTEMS;uint;powerBits;Ownship power bus / generator states. see PowerBits enum for details
 1241;SYSTEMS;bool;busPowerBattery;True if at least the battery bus is powered
 1242;SYSTEMS;bool;busPowerEmergency;True if at least the emergency bus is powered
 1243;SYSTEMS;bool;busPowerEssential;True if at least the essential bus is powered
@@ -221,18 +221,18 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1330;TACAN;byte[];tacanInfo;TACAN info (new in BMS4)
 1340;TACAN;int;auxTChan;Backup TACAN Channel
 1350;TACAN;int;ufcTChan;UFC Tacan Channel
-1360;TRIM;float;trimPitch;Value of trim in pitch axis, -0.5 to +0.5
-1370;TRIM;float;trimRoll;Value of trim in roll axis, -0.5 to +0.5
-1380;TRIM;float;trimYaw;Value of trim in yaw axis, -0.5 to +0.5
-1450;ALTIMETER;uint;altBits;Various altimeter bits, see AltBits enum for details
-1451;ALTIMETER;bool;calType;True if calibration in inches of Mercury (Hg), false if in hectoPascal (hPa)
+1360;TRIM;float;trimPitch;Value of trim in pitch axis- -0.5 to +0.5
+1370;TRIM;float;trimRoll;Value of trim in roll axis- -0.5 to +0.5
+1380;TRIM;float;trimYaw;Value of trim in yaw axis- -0.5 to +0.5
+1450;ALTIMETER;uint;altBits;Various altimeter bits- see AltBits enum for details
+1451;ALTIMETER;bool;calType;True if calibration in inches of Mercury (Hg)- false if in hectoPascal (hPa)
 1452;ALTIMETER;bool;pneuFlag;True if PNEU flag is visible
 1460;HSI/ADI/TACAN;uint;hsiBits;HSI flags
 1461;HSI/ADI/TACAN;bool;toTrue;HSI_FLAG_TO_TRUE
 1462;HSI/ADI/TACAN;bool;ilsWarning  ;HSI_FLAG_ILS_WARN
 1463;HSI/ADI/TACAN;bool;courseWarning;HSI_FLAG_CRS_WARN
 1464;HSI/ADI/TACAN;bool;init ;HSI_FLAG_INIT
-1465;HSI/ADI/TACAN;bool;totalFlags ;HSI_FLAG_TOTAL_FLAGS; never set
+1465;HSI/ADI/TACAN;bool;totalFlags ;HSI_FLAG_TOTAL_FLAGS. never set
 1466;HSI/ADI/TACAN;bool;adi_OFF ;ADI OFF Flag
 1467;HSI/ADI/TACAN;bool;adi_AUX ;ADI AUX Flag
 1468;HSI/ADI/TACAN;bool;adi_GS ;ADI GS FLAG
@@ -246,7 +246,7 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1476;HSI/ADI/TACAN;byte;middleMarker ;MARKER beacon light for middle marker
 1477;HSI/ADI/TACAN;bool;fromTrue ;HSI_FLAG_TO_TRUE
 1478;HSI/ADI/TACAN;bool;flying ;True if player is attached to an aircraft (i.e. not in UI state). 
-1480;LIGHTS;uint;blinkBits;Cockpit indicator lights blink status, see BlinkBits enum for details. Value is 1 if lamp is blinking
+1480;LIGHTS;uint;blinkBits;Cockpit indicator lights blink status. see BlinkBits enum for details. Value is 1 if lamp is blinking
 1481;HSI/ADI/TACAN;bool;blink_OuterMarker;Slow flashing for outer marker. Value is 1 if lamp is blinking
 1482;HSI/ADI/TACAN;bool;blink_MiddleMarker;Fast flashing for middle marker. Value is 1 if lamp is blinking
 1483;SYSTEMS;bool;blink_PROBEHEAT ;Probeheat system is tested. Value is 1 if lamp is blinking
@@ -259,17 +259,17 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1490;ENGINE;bool;blink_EPUOn ;abnormal EPU operation.  Value is 1 if lamp is blinking
 1491;ENGINE;bool;blink_JFSOn_Slow ;Non-critical failure.  Value is 1 if lamp is blinking slow
 1492;ENGINE;bool;blink_JFSOn_Fast ;Critical failure.  Value is 1 if lamp is blinking fast
-1500;LIGHTS;uint;lightBits;Cockpit Indicator Lights, one bit per bulb. See enum
+1500;LIGHTS;uint;lightBits;Cockpit Indicator Lights. one bit per bulb. See enum
 1501;CAUTION;bool;masterCaution ;Left eyebrow
 1502;CAUTION;bool;tf;Left eyebrow
 1503;CAUTION;byte;oxy_BROW ;Repurposed for eyebrow OXY LOW (was OBS, unused)
-1504;CAUTION;bool;equip_HOT ;Caution light; repurposed for cooling fault (was: not used)
+1504;CAUTION;bool;equip_HOT ;Caution light. repurposed for cooling fault (was: not used)
 1505;LIGHTS;bool;onGround ;True if on ground: this is not a lamp bit!
-1506;CAUTION;bool;eng_FIRE ;Right eyebrow; upper half of split face lamp
-1507;CAUTION;bool;config;Stores config, caution panel
+1506;CAUTION;bool;eng_FIRE ;Right eyebrow. upper half of split face lamp
+1507;CAUTION;bool;config;Stores config. caution panel
 1508;CAUTION;bool;hyd;Right eyebrow; see also OIL (this lamp is not split face)
-1509;TEST/FLCS;bool;flcs_ABCD ;TEST panel FLCS channel lamps; repurposed, was OIL (see HYD; that lamp is not split face)
-1510;CAUTION;bool;flcs;Right eyebrow; was called DUAL which matches block 25, 30/32 and older 40/42
+1509;TEST/FLCS;bool;flcs_ABCD ;TEST panel FLCS channel lamps. repurposed. was OIL (see HYD. that lamp is not split face)
+1510;CAUTION;bool;flcs;Right eyebrow; was called DUAL which matches block 25 30/32 and older 40/42
 1511;CAUTION;bool;can;Right eyebrow
 1512;CAUTION;bool;t_l_CFG ;Right eyebrow
 1513;INDEXER;bool;aoaAbove ;AOA Indexer top
@@ -291,8 +291,8 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1529;CAUTION;bool;nwsFail ;Caution lights
 1530;CAUTION;bool;cabinPress ;Caution lights
 1531;SYSTEMS;bool;autoPilotOn ;TRUE if is AP on.  NB: This is not a lamp bit!
-1532;SYSTEMS;bool;tfr_STBY ;MISC panel; lower half of split face TFR lamp
-1540;LIGHTS;uint;lightBits2;Cockpit Indicator Lights, one bit per bulb. See enum
+1532;SYSTEMS;bool;tfr_STBY ;MISC panel. lower half of split face TFR lamp
+1540;LIGHTS;uint;lightBits2;Cockpit Indicator Lights. one bit per bulb. See enum
 1541;CMDS/RWR;bool;handOff ;Threat Warning Prime
 1542;CMDS/RWR;byte;launch ;Threat Warning Prime
 1543;CMDS/RWR;byte;priMode ;Threat Warning Prime
@@ -313,8 +313,8 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1558;CMDS/RWR;bool;ecmFail ;ECM
 1559;CAUTION;bool;fwdFuelLow ;Caution lights
 1560;CAUTION;bool;aftFuelLow ;Caution lights
-1561;ENGINE;byte;epuOn ;EPU panel; run light
-1562;ENGINE;byte;jfsOn ;Eng Jet Start panel; run light
+1561;ENGINE;byte;epuOn ;EPU panel..run light
+1562;ENGINE;byte;jfsOn ;Eng Jet Start panel. run light
 1563;CAUTION;bool;sec ;Caution panel
 1564;CAUTION;bool;oxy_Low;Caution panel
 1565;CAUTION;byte;probeHeat;Caution panel
@@ -322,10 +322,10 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1567;CAUTION;bool;buc;Caution panel
 1568;CAUTION;bool;fuel_Oil_Hot ;Caution panel
 1569;CAUTION;bool;anti_Skid;Caution panel
-1570;CAUTION;bool;tfr_Engaged;MISC panel; upper half of split face TFR lamp
+1570;CAUTION;bool;tfr_Engaged;MISC panel. upper half of split face TFR lamp
 1571;GEAR;bool;gearHandle ;Lamp in gear handle lights on fault or gear in motion
 1572;CAUTION;bool;engine;Lower half of right eyebrow ENG FIRE/ENGINE lamp
-1580;LIGHTS;uint;lightBits3;Cockpit Indicator Lights, one bit per bulb. See enum
+1580;LIGHTS;uint;lightBits3;Cockpit Indicator Lights. one bit per bulb. See enum
 1581;ELECTRICS;bool;flcsPmg ;Elec Panel
 1582;ELECTRICS;bool;mainGen ;Elec Panel
 1583;ELECTRICS;bool;stbyGen ;Elec Panel
@@ -340,19 +340,19 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1592;CAUTION;bool;lef_Fault ;Caution panel
 1593;GEAR;bool;onGround ;Weight-on-wheels
 1594;TEST/FLCS;bool;flcsBitRun ;FLT CONTROL panel RUN light (used to be Multi-engine fire light)
-1595;TEST/FLCS;bool;flcsBitFail ;FLT CONTROL panel FAIL light (used to be Lock light Cue; non-F-16)
-1596;CAUTION;bool;dbuWarn ;Right eyebrow DBU ON cell; was Shoot light cue; non-F16
-1597;GEAR;bool;noseGearDown ;Landing gear panel; on means down and locke
-1598;GEAR;bool;leftGearDown ;Landing gear panel; on means down and locked
-1599;GEAR;bool;rightGearDown ;Landing gear panel; on means down and locked
-1600;GEAR;bool;parkBrakeOn ;Parking brake engaged; NOTE: not a lamp bit
+1595;TEST/FLCS;bool;flcsBitFail ;FLT CONTROL panel FAIL light (used to be Lock light Cue. non-F-16)
+1596;CAUTION;bool;dbuWarn ;Right eyebrow DBU ON cell. was Shoot light cue. non-F16
+1597;GEAR;bool;noseGearDown ;Landing gear panel. on means down and locke
+1598;GEAR;bool;leftGearDown ;Landing gear panel. on means down and locked
+1599;GEAR;bool;rightGearDown ;Landing gear panel. on means down and locked
+1600;GEAR;bool;parkBrakeOn ;Parking brake engaged. NOTE: not a lamp bit
 1601;ELECTRICS;bool;power_Off ;Set if there is no electrical power.  NB: not a lamp bit
 1602;CAUTION;bool;cadc ;Caution panel
 1603;AIRCRAFT;bool;sSpeedBrake ;True if speed brake is in anything other than stowed position
 1604;TEST/FLCS;bool;sysTest ;Threat Warning Prime - additional bits
-1605;CAUTION;bool;mcAnnounced ;Master Caution WILL come up in 3sec; turns off when MC light is on
-1606;AIRCRAFT;bool;mlgWow ;MLGWOW is only for AFM , it means WOW switches on MLG are triggered 
-1607;AIRCRAFT;bool;nlgWow ;NLGWOW is only for AFM , it means WOW switches on MLG are triggered 
+1605;CAUTION;bool;mcAnnounced ;Master Caution WILL come up in 3sec. turns off when MC light is on
+1606;AIRCRAFT;bool;mlgWow ;MLGWOW is only for AFM  it means WOW switches on MLG are triggered 
+1607;AIRCRAFT;bool;nlgWow ;NLGWOW is only for AFM  it means WOW switches on MLG are triggered 
 1608;AIRCRAFT;bool;atf_Not_Engaged;Autopilot status TFR
 1609;CAUTION;bool;Inlet_Icing;Caution Panel 
 1610;RADIO;string[];bupUhfFreq;Manuel UHF Freqs for BUP Radio
@@ -399,7 +399,7 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1661;AIRCRAFT;int ;lastdamage;1 to 8 depending on quadrant. 
 1662;AIRCRAFT;float ;damageforce;How big the hit was.
 1663;AIRCRAFT;int;whendamage;???
-1670;F4SM;string[];StringData;various strings, see stringdata for details
+1670;F4SM;string[];StringData;various strings. see stringdata for details
 1671;F4SM;string;BMS.exe;path to BMS.exe
 1672;F4SM;string;KeyFile;path top keyfile in use
 1673;F4SM;string;BMSBasedir;reference to BMS directory
