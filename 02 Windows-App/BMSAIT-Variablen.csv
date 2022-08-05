@@ -17,7 +17,7 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 150;CMDS/RWR;float;ChaffCount;Number of Chaff left
 160;CMDS/RWR;float;FlareCount;Number of Flare left
 170;CMDS/RWR;byte[];RwrInfo;New RWR Info
-180;CMDS/RWR;int;cmdsMode;Ownship CMDS mode state, see CmdsModes enum for details
+180;CMDS/RWR;int;cmdsMode;Ownship CMDS mode state see CmdsModes enum for details
 190;AIRCRAFT;float;lefPos;Ownship LEF position
 200;AIRCRAFT;float;speedBrake;Ownship speed brake position 0 = closed, 1 = 60 Degrees open
 201;AIRCRAFT;int;speedBrake(g);Ownship speed brake position 0 = closed, 65535= 60 Degrees open
