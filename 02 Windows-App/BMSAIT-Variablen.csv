@@ -191,7 +191,7 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1244;SYSTEMS;bool;busPowerNonEssential;True if at least the non-essential bus is powered
 1245;SYSTEMS;bool;mainGenerator;True if the main generator is online
 1246;SYSTEMS;bool;standbyGenerator;True if the standby generator is online
-1247;SYSTEMS;bool;jetFuelStarter;True if JFS is running, can be used for magswitch
+1247;SYSTEMS;bool;jetFuelStarter;True if JFS is running. can be used for magswitch
 1248;SYSTEMS;bool;avionicsPower;True if UFC switch is turned on
 1250;SYSTEMS;int;currentTime;Current time in seconds (max 60 * 60 * 24)
 1260;SYSTEMS;int;mainPower;???
@@ -262,7 +262,7 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 1500;LIGHTS;uint;lightBits;Cockpit Indicator Lights. one bit per bulb. See enum
 1501;CAUTION;bool;masterCaution ;Left eyebrow
 1502;CAUTION;bool;tf;Left eyebrow
-1503;CAUTION;byte;oxy_BROW ;Repurposed for eyebrow OXY LOW (was OBS, unused)
+1503;CAUTION;byte;oxy_BROW ;Repurposed for eyebrow OXY LOW (was OBS. unused)
 1504;CAUTION;bool;equip_HOT ;Caution light. repurposed for cooling fault (was: not used)
 1505;LIGHTS;bool;onGround ;True if on ground: this is not a lamp bit!
 1506;CAUTION;bool;eng_FIRE ;Right eyebrow. upper half of split face lamp
