@@ -114,6 +114,11 @@
   #include "BMSAIT_LEDMatrix.h"
 #endif
 
+//LED MM5451 settings
+#ifdef LED_MM5451
+  #include "BMSAIT_LED_MM5451.h"
+#endif
+
 //LCD settings
 #ifdef LCD                              
   #include "BMSAIT_LCD.h"
@@ -211,6 +216,10 @@ void setup()
   #ifdef LEDMatrix                      //LEDMatrix setup begin
     SetupLEDMatrix();
   #endif                                //LEDMatrix setup end
+
+  #ifdef LED_MM5451                      //LED MM5451 setup begin
+    SetupLED_MM5451();
+  #endif                                //LED MM5451 setup end
  
   #ifdef LCD                            //LCD setup begin
    SetupLCD();
@@ -462,6 +471,12 @@ void UpdateOutput()
           UpdateLEDMatrix(x); 
           break;
       #endif    
+
+      #ifdef LED_MM5451
+        case 13: //LED_MM5451
+          UpdateLED_MM5451(x);
+          break;
+      #endif
       
       #ifdef LCD
         case 20: //LCD
