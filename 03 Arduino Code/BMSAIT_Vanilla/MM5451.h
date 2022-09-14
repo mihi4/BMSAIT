@@ -1,5 +1,6 @@
 #ifndef MM5451_h
 #define MM5451_h
+#endif
 #include <Arduino.h>
 
 class MM5451
@@ -10,8 +11,8 @@ class MM5451
         void setOutput(unsigned char pin, bool state);
         void clearAll();
         void lightAll();
-        setClockPin(unsigned char pin);
-        setDataPin(unsigned char pin);
+        void setClockPin(unsigned char pin);
+        void setDataPin(unsigned char pin);
     
         MM5451(unsigned char clockpin, unsigned char datapin); 
  
@@ -23,4 +24,3 @@ class MM5451
         bool databits[35];
 
 };
-
