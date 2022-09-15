@@ -1,6 +1,6 @@
 #ifndef MM5451_h
 #define MM5451_h
-#endif
+
 #include <Arduino.h>
 
 class MM5451
@@ -24,3 +24,5 @@ class MM5451
         bool databits[35];
 
 };
+
+#endif
