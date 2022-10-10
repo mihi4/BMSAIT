@@ -12,8 +12,8 @@
   #define CALIBRATE 160       // this byte marks a request to reset motors to inital position
   #define STARTPULL 170       // this byte marks a request to start the PULL logic on the arduino
   #define ENDPULL 180         // this byte marks a request to end the PULL logic on the arduino
-  #define TESTON  190         // activates testmode
-  #define TESTOFF 200         // deactivates testmode
+  #define TESTON  190         // activates debugmode
+  #define TESTOFF 200         // deactivates debugmode
   #define VAR_BEGIN '<'       // char to mark the begin of the actual data
   #define VAR_ENDE '>'        // char to mark the end of the actual data
   #define TYP_ANFANG '{'      // char to mark the begin of the type definition in a message string
@@ -61,7 +61,7 @@
   byte inputByte_1;           //container for incoming serial message
   byte state =0;              //marker to memorize the current position in a message string
   byte Uebertragung_pos=0;    //counts how many chars have already been read from an incoming data stram. Used to prevent an overflow of data variables. 
-  bool testmode=false;        //Testmode on/off
+  bool debugmode=false;        //debugmode on/off
   unsigned long lastInput =0; //last successful transmission
   
   #ifdef DUE_NATIVE
@@ -583,16 +583,16 @@ void ReadResponse()
       }       
       else if (inputByte_1 == TESTON)
       {
-        //confirm testmode
-        testmode=true;
+        //confirm debugmode
+        debugmode=true;
         SERIALCOM.flush();
         SendSysCommand("on");
         Reset();
       }  
       else if (inputByte_1 == TESTOFF)
       {
-        //confirm end of testmode
-        testmode=false;
+        //confirm end of debugmode
+        debugmode=false;
         SERIALCOM.flush();
         SendSysCommand("off");
         Reset();
@@ -606,7 +606,7 @@ void ReadResponse()
       else 
       { 
         state=0;    //unexpected value. discard data and start over.  
-        if (testmode){SendMessage("Fehler State 1",1);}
+        if (debugmode){SendMessage("Fehler State 1",1);}
       }
     }
           
@@ -628,7 +628,7 @@ void ReadResponse()
         }
         else
         {
-          if (testmode){SendMessage("Fehler State 3",1);}
+          if (debugmode){SendMessage("Fehler State 3",1);}
           state=0; //unexpected value. discard data and start over.
         }  
       }
@@ -661,18 +661,18 @@ void ReadResponse()
                 memcpy(datenfeld[neuer_wert.varNr].wert, neuer_wert.wert, sizeof(neuer_wert.wert)); //write the new data into the data container
               }
               lastInput=millis(); //store last transmission time
-              if (testmode){DebugReadback(neuer_wert.varNr);}
+              if (debugmode){DebugReadback(neuer_wert.varNr);}
             }  
             state=0;
           }
           else if (Uebertragung_pos>DATENLAENGE)  //end of variable missed. discard and start over.
           { 
-            if (testmode){SendMessage("Fehler State 3.1",1);}       
+            if (debugmode){SendMessage("Fehler State 3.1",1);}       
             state=0;
           }
           else if (c==MESSAGEBEGIN)    //end of variable missed. discard and start over.
           {
-            if (testmode){SendMessage("Fehler State 3.2",1);}
+            if (debugmode){SendMessage("Fehler State 3.2",1);}
             state=1;
           }
           else                

@@ -25,7 +25,7 @@ unsigned long lu;   //last update
 ServodataPWM servodataPWM[] =
 {
 // Channel  minPulse   maxPulse   a_ug   a_og   last  lu
-    {0,       160,       605,      0,    600,     0,   0}  // example RPM: {Servo on Channel 0, min pulse length (around 150)=160, max pulse length (around 600)=605, lowest possible value=0, highest value=103, past value=0, last update=0}
+    {0,       160,       605,      0,    110,     0,   0}  // example RPM: {Servo on Channel 0, min pulse length (around 150)=160, max pulse length (around 600)=605, lowest possible value=0, highest value=103, past value=0, last update=0}
 };
 const int servozahlPWM = sizeof(servodataPWM)/sizeof(servodataPWM[0]);
 

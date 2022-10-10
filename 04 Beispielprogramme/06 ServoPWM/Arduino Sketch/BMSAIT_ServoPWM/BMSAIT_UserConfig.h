@@ -37,11 +37,11 @@
   
 //BOARD SELECTION
 
-  #define UNO         //uncomment this if this sketch will be loaded on an UNO
+  //#define UNO         //uncomment this if this sketch will be loaded on an UNO
   //#define NANO        //uncomment this if this sketch will be loaded on an NANO
   //#define MICRO       //uncomment this if this sketch will be loaded on an MICRO
   //#define LEONARDO    //uncomment this if this sketch will be loaded on an LEONARDO
-  //#define MEGA        //uncomment this if this sketch will be loaded on an MEGA
+  #define MEGA        //uncomment this if this sketch will be loaded on an MEGA
   //#define DUE         //uncomment this if this sketch will be loaded on an DUE (connected via programming port)
   //#define DUE_NATIVE  //uncomment this if this sketch will be loaded on an DUE (connected via native port)
 

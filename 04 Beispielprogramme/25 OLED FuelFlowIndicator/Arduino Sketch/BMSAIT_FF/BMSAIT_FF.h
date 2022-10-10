@@ -1,5 +1,5 @@
 //FuelFlow code from the DEDunino software
-
+// V1.3.7 26.09.2021
 
 #include <U8g2lib.h>
 #include "FalconFFIFont.h"   //load font
@@ -8,10 +8,14 @@
 // make sure to find the correct constructor here
 #if defined(DUE) || defined(DUE_NATIVE) || defined(MEGA)
   //arduino board with enough memory will use the unbuffered mode
-  U8G2_SSD1306_128X64_NONAME_F_4W_SW_SPI DisplayFFI(U8G2_R0, 2/*clock (D0) */, 3/*data (D1) */, 6/*cs*/,5/*dc*/, 4/*reset*/); 
+   U8G2_SSD1306_128X64_NONAME_F_4W_SW_SPI DisplayFFI(U8G2_R0, 2/*clock (D0) */, 3/*data (D1) */, 6/*cs*/,5/*dc*/, 4/*reset*/); 
+  //U8G2_SSD1306_128X64_NONAME_F_SW_I2C DisplayFFI(U8G2_R0, /* clock=*/ SCL, /* data=*/ SDA, /* reset=*/ U8X8_PIN_NONE);
+  //U8G2_SSD1306_128X64_NONAME_F_HW_I2C DisplayFFI(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
 #else
   //arduino board with low memory will have to use the buffered mode
   U8G2_SSD1306_128X64_NONAME_1_4W_SW_SPI DisplayFFI(U8G2_R0, 2/*clock (D0) */, 3/*data (D1) */, 6/*cs*/,5/*dc*/, 4/*reset*/);
+  //U8G2_SSD1306_128X64_NONAME_F_SW_I2C DisplayFFI(U8G2_R0, /* clock=*/ SCL, /* data=*/ SDA, /* reset=*/ U8X8_PIN_NONE);
+  //U8G2_SSD1306_128X64_NONAME_F_HW_I2C DisplayFFI(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
 #endif
 
 // Change these display sizes if needed
@@ -29,8 +33,8 @@
 
 #if defined(MEGA) || defined(DUE) || defined(DUE_NATIVE)
   // disable the "expensive stuff" without actually asking the users
-  #define REALFFI
-  #define BEZEL
+   #define REALFFI
+   #define BEZEL
 #endif
 
 #ifdef BEZEL
@@ -168,7 +172,7 @@ void UpdateFFI(byte x)
 {
   if ((millis()-lastInput)>10000) //if no data was recieved within 10 seconds, shut down display
   {
-    if (!testmode) //display remains on in testmode
+    if (!debugmode) //display remains on in debugmode
     {
       ClearDisplayFFI();
       delay(1);
@@ -188,7 +192,7 @@ void UpdateFFI(byte x)
     do 
     {
       DisplayFFI.setCursor(FF_POS_X_1, FFI_SCREEN_H_MID + FF_V_CONST);
-      DisplayFFI.print("00000");
+      DisplayFFI.print("99999");
       #ifdef BEZEL
           drawBezel();
       #endif
@@ -350,10 +354,10 @@ void UpdateFFI(byte x)
       DisplayFFI.setCursor(FF_POS_X_1, FFI_SCREEN_H_MID + FF_V_CONST);
       DisplayFFI.print(FFtt); // First two digits
       DisplayFFI.setCursor(FF_POS_X_2, FFI_SCREEN_H_MID + FF_V_CONST);
-      DisplayFFI.print(FFt); // First two digits
+      DisplayFFI.print(FFt); // First two digits    
     #endif
 
-    // print the FFh animation
+    // print the FFh animation  -  don't use it with i2c
     DisplayFFI.setCursor(FF_POS_X_3, FFI_SCREEN_H_MID + short(((FF_CHAR_H + 1) * -2)) + offset + FF_V_CONST);
     DisplayFFI.print(FFhTwoOver);
     DisplayFFI.setCursor(FF_POS_X_3, FFI_SCREEN_H_MID + short(((FF_CHAR_H + 1) * -1)) + offset + FF_V_CONST);
