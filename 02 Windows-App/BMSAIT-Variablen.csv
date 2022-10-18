@@ -9,6 +9,8 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 70;AIRCRAFT;float;turnRate;actual turn rate (no delay or dampening) in degrees/second
 80;AIRCRAFT;float;yaw;Ownship Yaw (Radians)
 90;ALTIMETER;float;aauz;AAU altimeter indicated altitude (new in BMS4)
+91;ALTIMETER;int;altNeedle;altimeter needle values 0-999
+92;ALTIMETER;string;altNumbers;altimeter hundredth 0-800
 100;ALTIMETER;float;cabinAlt;Ownship cabin altitude
 101;ALTIMETER;int;cabinAlt(s);Ownship cabin altitude (0..65535)
 110;ALTIMETER;float;caraAlow;Cara alow setting
@@ -99,6 +101,7 @@ ID;Gruppe;Typ;Bezeichnung;Beschreibung
 650;HeadPosition;float;headY;Head Y offset from design eye (feet)
 660;HeadPosition;float;headZ;Head Z offset from design eye (feet)
 670;HSI/ADI/TACAN;float;kias;Ownship Indicated Airspeed (Knots)
+671;HSI/ADI/TACAN;int;kias(g);Ownship Indicated Airspeed (0..65535)
 680;HSI/ADI/TACAN;float;mach;Ownship Mach number
 690;HSI/ADI/TACAN;float;vt;Ownship True Airspeed (Ft/Sec)
 700;HSI/ADI/TACAN;byte;navMode;HSI nav mode (new in BMS4)
