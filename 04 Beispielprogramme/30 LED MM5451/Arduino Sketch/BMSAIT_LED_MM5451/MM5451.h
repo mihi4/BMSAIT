@@ -9,6 +9,7 @@ class MM5451
         void pulseCLK();
         void outputDataBits();
         void setOutput(unsigned char pin, bool state);
+		bool getOutput(unsigned char pin);
         void clearAll();
         void lightAll();
         void setClockPin(unsigned char pin);

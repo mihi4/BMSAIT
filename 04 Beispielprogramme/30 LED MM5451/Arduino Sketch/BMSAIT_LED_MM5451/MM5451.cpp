@@ -41,10 +41,16 @@ void MM5451::setOutput(unsigned char pin, bool state) {
     databits[pin] = state;
 }
 
+bool MM5451::getOutput(unsigned char pin) {
+    return databits[pin];
+}
+
+
 void MM5451::lightAll() {
     sendStartBit();
     digitalWrite(DATA, 1);
     for(byte x=0; x < OUTPUTS; x++) {
+		databits[x] = true;
         pulseCLK();
     }
 }
@@ -53,9 +59,11 @@ void MM5451::clearAll() {
     sendStartBit();
     digitalWrite(DATA, 0);
     for(byte x=0; x < OUTPUTS; x++) {
+		databits[x] = false;
         pulseCLK();
     }
 }
+
 
 void MM5451::sendStartBit() {
     digitalWrite(DATA, 1);
