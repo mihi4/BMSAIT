@@ -13,7 +13,7 @@
    //U8G2_SSD1322_NHD_256X64_F_4W_HW_SPI displayDED(U8G2_R0, /* CS=*/ 4, /* DC=*/ 2);
 #else
   //arduino board with low memory will have to use the buffered mode  
-   U8G2_SSD1322_NHD_256X64_1_4W_SW_SPI displayDED(U8G2_R0, /* clock=*/ 2, /* data=*/ 3, /* cs=*/ 4, /* dc=*/ 5, /* reset=*/ 6); 
+   U8G2_SSD1322_NHD_256X64_1_4W_SW_SPI displayDED(U8G2_R0, /* clock=*/ 2, /* data=*/ 3, /* cs=*/ 4, /* dc=*/ 5 /* reset= 6*/); 
    //U8G2_SSD1322_NHD_256X64_1_4W_HW_SPI displayDED(U8G2_R0, /* CS=*/ 4, /* DC=*/ 2);
 #endif
 
@@ -21,6 +21,7 @@
   #define PRE_BOOT_PAUSE 1000
   #define POST_BOOT_PAUSE 1000
   #define DED_DRAW_PAUSE 200
+  #define DEDINDEX 2  // index of first datenfeld used
 unsigned long DED_last_comm = millis();
 unsigned long startRequest = 0;
 short Run = 0;
@@ -39,8 +40,8 @@ void ReadDED()
   byte treffer=0;
   if (SERIALCOM.available()) ReadResponse(); //clear input buffer
   
-  if (datenfeld[2].ID[0]=='0') { SendMessage("DED",6);} //data variable is set to 023x -> ask for DED data
-  if (datenfeld[2].ID[0]=='1') {SendMessage("PFL",6);} //data variable is set to 110x -> ask for PFL data
+  if (datenfeld[DEDINDEX].ID[0]=='0') { SendMessage("DED",6);} //data variable is set to 023x -> ask for DED data
+  if (datenfeld[DEDINDEX].ID[0]=='1') {SendMessage("PFL",6);} //data variable is set to 110x -> ask for PFL data
   
   long t=millis();
   treffer=0;
@@ -85,8 +86,8 @@ void ReadDED()
             {delay(1);}
           if (SERIALCOM.available()>=24)
           {
-            SERIALCOM.readBytes(datenfeld[i2-48+2].wert,24);
-            datenfeld[i2-48+2].wert[24]='\0';
+            SERIALCOM.readBytes(datenfeld[i2-48+DEDINDEX].wert,24);
+            datenfeld[i2-48+DEDINDEX].wert[24]='\0';
             treffer++;
           }
           else
@@ -126,7 +127,7 @@ void ReadDED()
 void ClearDED()
 {
   char emptyLine[]="                        ";
-  for (byte linie=2;linie<7;linie++)
+  for (byte linie=DEDINDEX;linie<DEDINDEX+5;linie++)
   {
     memmove(datenfeld[linie].wert,emptyLine,sizeof(emptyLine));
   }
@@ -145,7 +146,7 @@ void RealDED()
     
       for (byte line = 0; line < 5; line++) 
       {
-        displayDED.drawStr(DED_H_CONST, line * DED_CHAR_H + DED_V_CONST, datenfeld[line+2].wert);
+        displayDED.drawStr(DED_H_CONST, line * DED_CHAR_H + DED_V_CONST, datenfeld[line+DEDINDEX].wert);
       }
     #if defined(DUE) || defined(DUE_NATIVE) || defined(MEGA)
       displayDED.sendBuffer(); //strong arduinos: command for full buffered mode
@@ -167,12 +168,12 @@ void TestDED()
   #endif
 
       displayDED.drawFrame(1,1,255,63);
-      displayDED.drawFrame(64,16,128,32);
-      displayDED.drawStr(62+DED_H_CONST, DED_V_CONST+14+DED_CHAR_H , "BMSAIT - DED");       
+      displayDED.drawFrame(32,16,195,32);
+      displayDED.drawStr(30+DED_H_CONST, DED_V_CONST+11+DED_CHAR_H , "PILOT FAULT DISPLAY");       
       displayDED.drawLine(128,1,128,16);
       displayDED.drawLine(128,48,128,63);
-      displayDED.drawLine(1,32,63,32);
-      displayDED.drawLine(192,32,255,32);
+      displayDED.drawLine(1,32,32,32);
+      displayDED.drawLine(227,32,255,32);
   
   #if defined(DUE) || defined(DUE_NATIVE) || defined(MEGA)
     displayDED.sendBuffer(); //strong arduinos: command for full buffered mode
@@ -189,7 +190,7 @@ void SetupDED()
   displayDED.setFont(FalconDED);
   displayDED.setFontPosTop();
   TestDED();
-  delay(POST_BOOT_PAUSE); 
+  delay(2000); 
   ClearDED();
   SERIALCOM.setTimeout(500);
 }
@@ -208,6 +209,7 @@ void DrawDED(bool mode)
 ///update the DED
 void UpdateDED() 
 { 
+
   if ((millis()-lastInput)>10000) //if no data was recieved within 10 seconds, shut down display
   {
     if (!debugmode) //in testmode, display remains on regardless of data transfer status
@@ -228,14 +230,17 @@ void UpdateDED()
     powerOn=true;
   }
   
-  if (datenfeld[0].wert[0]!='T')  //PC is not in 3D
-  { DrawDED(false);}          //show testscreen
+  /*if (datenfeld[0].wert[0]!='T')  //PC is not in 3D
+  { SendMessage("2D",1); DrawDED(false);}          //show testscreen
   else if (datenfeld[1].wert[0]!='T')  
   { 
     ClearDED();               //PC is in 3D, Avionics are off
     DrawDED(true);
+	SendMessage("3D AV off",1); 
   }   
-  else                                 
-  { DrawDED(true); }          //PC is in 3D, Avionics are on
-
+  else                          
+	  
+  { SendMessage("3D AV on",1); DrawDED(true); }          //PC is in 3D, Avionics are on
+   */
+   DrawDED(true);
 }

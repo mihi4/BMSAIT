@@ -43,10 +43,10 @@
 //BOARD SELECTION
 
   //#define UNO         //uncomment this if this sketch will be loaded on an UNO
-  //#define NANO        //uncomment this if this sketch will be loaded on an NANO
+  #define NANO        //uncomment this if this sketch will be loaded on an NANO
   //#define MICRO       //uncomment this if this sketch will be loaded on an MICRO
   //#define LEONARDO    //uncomment this if this sketch will be loaded on an LEONARDO
-  #define MEGA        //uncomment this if this sketch will be loaded on an MEGA
+  //#define MEGA        //uncomment this if this sketch will be loaded on an MEGA
   //#define DUE         //uncomment this if this sketch will be loaded on an DUE
   //#define DUE_NATIVE  //uncomment this if this sketch will be loaded on an DUE
   //#define ESP         //uncomment this if this sketch will be loaded on an ESP32 or ESP8266
